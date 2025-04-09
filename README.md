@@ -27,7 +27,7 @@ http://127.0.0.1:5000
 ```
 
 ## Acknowledgements
-I used [Pollinations.AI](https://pollinations.ai)'s open source API endpoint to generate the image from prompt. Thanks Pollination.AI!
+I used [Pollinations.AI](https://pollinations.ai)'s open source API endpoint to generate the image from prompt. Thanks Pollinations.AI!
 
 
 ## Example Images
