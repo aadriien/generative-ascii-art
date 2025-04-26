@@ -1,3 +1,4 @@
+import os
 import requests
 from PIL import Image
 
@@ -79,25 +80,8 @@ def index():
 
 
 
-# def main():
-#     prompt = "A fish riding a bike with sunglasses"
-    
-#     # Step 1: Generate image from prompt
-#     image_url = generate_image(prompt)
-#     print(f"Generated image URL: {image_url}")
-#     print("\n\n\n")
-
-#     generate_ascii_from_image()
-#     print("\n\n\n")
-    
-#     # Step 2: Convert generated image to ASCII
-#     ascii_art = convert_image_to_ascii()
-#     print("Generated ASCII Art:\n")
-#     print(ascii_art)
-
-
 if __name__ == "__main__":
-    # main()
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+
 
 
