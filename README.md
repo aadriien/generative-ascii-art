@@ -36,6 +36,7 @@ I used [Pollinations.AI](https://pollinations.ai)'s open source API endpoint to 
 
 
 ## Example Images
+![Example image of ASCII prompt result](./example-imgs/ascii-vader.png)
 ![Example image of ASCII webpage tiles](./example-imgs/ascii-tiles.png)
 ![Example image of ASCII drawing comparisons](./example-imgs/ascii-compare.png)
 ![Example image of ASCII drawing in terminal](./example-imgs/ascii-terminal.png)
