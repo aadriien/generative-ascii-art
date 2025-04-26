@@ -1,116 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ASCII Art Generator</title>
-  <style>
-    body {
-      font-family: monospace;
-      background-color: #282c34;
-      color: #ffffff;
-      padding: 20px;
-      margin: 0;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 20px;
-    }
-
-    .form-container {
-      background-color: #2c2f38;
-      padding: 20px;
-      border-radius: 5px;
-      border: 1px solid #555;
-    }
-
-    textarea {
-      width: 90%;
-      padding: 10px;
-      font-size: 16px;
-      resize: vertical;
-      min-height: 100px;
-      background-color: #1e1e24;
-      color: #fff;
-      border: 1px solid #555;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-
-    .image-container {
-      background-color: #2c2f38;
-      padding: 20px;
-      border-radius: 5px;
-      border: 1px solid #555;
-      text-align: center;
-    }
-
-    .image-container img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: contain;
-      border-radius: 5px;
-    }
-
-    .ascii-art {
-      background-color: #2c2f38;
-      padding: 20px;
-      border-radius: 5px;
-      border: 1px solid #555;
-      overflow: auto;
-      font-size: 14px;
-    }
-
-    pre {
-      white-space: pre-wrap;
-      font-family: monospace;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ASCII Art Generator</title>
+    <style>
+        body {
+            font-family: monospace;
+            background-color: #282c34;
+            color: #ffffff;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+        }
+        
+        .form-container {
+            background-color: #2c2f38;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #555;
+        }
+        
+        textarea {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 100px;
+            background-color: #1e1e24;
+            color: #fff;
+            border: 1px solid #555;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        
+        .image-container {
+            background-color: #2c2f38;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            text-align: center;
+        }
+        
+        .image-container img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        
+        .ascii-art {
+            background-color: #2c2f38;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            overflow: auto;
+            font-size: 14px;
+        }
+        
+        pre {
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
 </head>
 <body>
-  <h1>ASCII Art Generator</h1>
-  <div class="grid-container">
-    <!-- Top-left: Text form -->
-    <form method="POST" class="form-container">
-      <textarea name="prompt" placeholder="Enter a prompt for the image..."></textarea><br>
-      <button type="submit">Generate ASCII Art</button>
-    </form>
-
-    <!-- Top-right: LLM-generated image -->
-    <div class="image-container">
-        <h2>Generated Image</h2>
-        {% if image_url %}
-          <img src="{{ image_url }}" alt="Generated Image" />
-        {% else %}
-          <p style="opacity: 0.5; font-style: italic;">Image will appear here once generated.</p>
-        {% endif %}
+    <h1>ASCII Art Generator</h1>
+    <div class="grid-container">
+        <!-- Top-left: Text form -->
+        <form method="POST" class="form-container">
+            <textarea name="prompt" placeholder="Enter a prompt for the image..."></textarea><br>
+            <button type="submit">Generate ASCII Art</button>
+        </form>
+        
+        <!-- Top-right: LLM-generated image -->
+        <div class="image-container">
+            <h2>Generated Image</h2>
+            {% if image_url %}
+            <img src="{{ image_url }}" alt="Generated Image" />
+            {% else %}
+            <p style="opacity: 0.5; font-style: italic;">Image will appear here once generated.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Bottom-left: ASCII Magic -->
+        <div class="ascii-art">
+            <h2>ASCII Art (ascii_magic)</h2>
+            <div id="ascii_art_magic">
+                {{ ascii_art_magic | safe }}
+            </div>
+        </div>
+        
+        <!-- Bottom-right: ASCII Custom -->
+        <div class="ascii-art">
+            <h2>ASCII Art (Custom Conversion)</h2>
+            <pre>{{ ascii_art_custom }}</pre>
+        </div>
     </div>
-
-    <!-- Bottom-left: ASCII Magic -->
-    <div class="ascii-art">
-      <h2>ASCII Art (ascii_magic)</h2>
-      <div id="ascii_art_magic">
-        {{ ascii_art_magic | safe }}
-      </div>
-    </div>
-
-    <!-- Bottom-right: ASCII Custom -->
-    <div class="ascii-art">
-      <h2>ASCII Art (Custom Conversion)</h2>
-      <pre>{{ ascii_art_custom }}</pre>
-    </div>
-  </div>
 </body>
 </html>

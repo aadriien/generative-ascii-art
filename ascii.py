@@ -11,10 +11,18 @@ app = Flask(__name__)
 
 AI_URL_BASE = "https://image.pollinations.ai/prompt"
 
+PARAMS = {
+    "width": 1280,
+    "height": 720,
+    "model": "flux",
+    "nologo": "true",
+    "private": "true",
+    "safe": "true"
+}
 
 
 def generate_image(prompt):
-    response = requests.get(f"{AI_URL_BASE}/{prompt}")
+    response = requests.get(f"{AI_URL_BASE}/{prompt}", params=PARAMS, timeout=300)
 
     if response.status_code != 200:
         raise ValueError("Error: could not reach URL")
