@@ -1,7 +1,7 @@
 Flask==2.2.2
 requests==2.31.0
 Pillow==11.2.1
-ascii-magic==0.3.2
+ascii-magic==2.3.0
 ansi2html==1.6.0
 gunicorn==23.0.0
 brotlipy==0.7.0
